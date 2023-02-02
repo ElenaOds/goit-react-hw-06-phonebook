@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import { useEffect} from 'react';
 import { nanoid } from 'nanoid';
 import { ContactForm }  from './ContactForm/ContactForm';
 import { Filter } from './Filter/Filter';
@@ -6,19 +6,14 @@ import { ContactList } from './ContactList/ContactList';
 import {MainTitle, Title} from './App.styled';
 import { useSelector, useDispatch} from 'react-redux';
 import { addContact, delContact } from '../redux/contactSlice';
+import { filerContact } from '../redux/filterSlice';
 
 
 
 export function App() {
   const dispatch = useDispatch();
   const contacts = useSelector(state => state.contact.contacts);
-
-  
-  // const [contacts, setContacts] = useState(() => {
-  //   return JSON.parse(window.localStorage.getItem('contacts')) ?? '';
-  // });
-  const [filter, setFilter] = useState('');
- 
+  const filter = useSelector(state => state.filter.filter)
 
  const handleSubmit = e => {
     const id = nanoid();
@@ -37,14 +32,13 @@ export function App() {
   
   const handleChange = e => {
     const { value } = e.target;
-    setFilter(value);
+    dispatch(filerContact(value));
   };
 
     const deleteContact = contactId => {
     dispatch(delContact(contactId));
 };
 
-console.log(delContact());
 
   const getFilteredContacts = () => {
     const filterContactsList = contacts.filter(contact => {
