@@ -15,3 +15,5 @@ export const filterSlice = createSlice({
 });
 
 export const { filerContact } = filterSlice.actions; 
+
+export const setFilter = state => state.filter.filter;

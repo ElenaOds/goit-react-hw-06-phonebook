@@ -5,15 +5,15 @@ import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
 import {MainTitle, Title} from './App.styled';
 import { useSelector, useDispatch} from 'react-redux';
-import { addContact, delContact } from '../redux/contactSlice';
-import { filerContact } from '../redux/filterSlice';
+import { addContact, delContact, getContacts } from '../redux/contactSlice';
+import { filerContact, setFilter } from '../redux/filterSlice';
 
 
 
 export function App() {
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contact.contacts);
-  const filter = useSelector(state => state.filter.filter)
+  const contacts = useSelector(getContacts);
+  const filter = useSelector(setFilter)
 
  const handleSubmit = e => {
     const id = nanoid();
