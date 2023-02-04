@@ -10,7 +10,6 @@ export const filterSlice = createSlice({
         filerContact(state, action) {
             state.filter = action.payload;    
         },
-  
     },
 });
 

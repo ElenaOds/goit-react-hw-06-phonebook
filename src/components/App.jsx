@@ -9,11 +9,10 @@ import { addContact, delContact, getContacts } from '../redux/contactSlice';
 import { filerContact, setFilter } from '../redux/filterSlice';
 
 
-
 export function App() {
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
-  const filter = useSelector(setFilter)
+  const filter = useSelector(setFilter);
 
  const handleSubmit = e => {
     const id = nanoid();
@@ -38,7 +37,6 @@ export function App() {
     const deleteContact = contactId => {
     dispatch(delContact(contactId));
 };
-
 
   const getFilteredContacts = () => {
     const filterContactsList = contacts.filter(contact => {
